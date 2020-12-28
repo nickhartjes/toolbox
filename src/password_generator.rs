@@ -46,9 +46,7 @@ pub mod password_generator {
         let checkbox_spaces: CheckButton = builder.get_object("check_button_spaces").unwrap();
         let checkbox_strict: CheckButton = builder.get_object("check_button_strict").unwrap();
 
-
         checkbox_symbols.set_active(true);
-
 
         // Password Length:
         // Include Symbols: ( e.g. @#$% )

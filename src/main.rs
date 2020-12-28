@@ -11,16 +11,12 @@ fn main() {
         println!("Failed to initialize GTK.");
         return;
     }
-    let glade_src = include_str!("test.glade");
+    let glade_src = include_str!("gui/main.glade");
     let builder = gtk::Builder::from_string(glade_src);
 
     password_generator::password_generator::load(&builder);
 
-
     let window: gtk::Window = builder.get_object("window").unwrap();
-
-
     window.show_all();
-
     gtk::main();
 }
