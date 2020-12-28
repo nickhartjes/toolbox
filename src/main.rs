@@ -1,3 +1,5 @@
+mod password_generator;
+
 extern crate gtk;
 extern crate gio;
 
@@ -12,7 +14,11 @@ fn main() {
     let glade_src = include_str!("test.glade");
     let builder = gtk::Builder::from_string(glade_src);
 
+    password_generator::password_generator::load(&builder);
+
+
     let window: gtk::Window = builder.get_object("window").unwrap();
+
 
     window.show_all();
 
