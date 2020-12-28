@@ -335,6 +335,10 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="border-width">3</property>
+                    <property name="monospace">True</property>
+                    <style>
+                      <class name="green"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="x">20</property>

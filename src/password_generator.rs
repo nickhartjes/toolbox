@@ -2,7 +2,7 @@ extern crate passwords;
 
 pub mod password_generator {
     use std::convert::TryFrom;
-    use gtk::{ContainerExt, Label, LabelBuilder, Button, WidgetExt, ButtonBuilder, Builder, ButtonExt, Fixed, CheckButtonBuilder, TextView, TextViewExt, TextBuffer, CheckButton, ToggleButtonExt, ComboBox};
+    use gtk::{ContainerExt, Label, LabelBuilder, Button, WidgetExt, ButtonBuilder, Builder, ButtonExt, Fixed, CheckButtonBuilder, TextView, TextViewExt, TextBuffer, CheckButton, ToggleButtonExt, ComboBox, TextBufferBuilder};
     use gtk::prelude::{BuilderExtManual, ComboBoxExtManual};
     use super::passwords::PasswordGenerator;
 
@@ -59,6 +59,7 @@ pub mod password_generator {
         let button: Button = builder.get_object("button_generate_password").unwrap();
         let text_password: TextView = builder.get_object("text_password").unwrap();
 
+
         button.connect_clicked(move |_| {
             let length = usize::try_from(combo_length.get_active().unwrap()).unwrap();
             let generated_password = generate(
@@ -71,6 +72,16 @@ pub mod password_generator {
                 checkbox_similar.get_active(),
                 checkbox_strict.get_active(),
             );
+
+            let string = &["<span color='green'>", &generated_password, "</span>"].concat();
+
+            let buffer = TextBufferBuilder::new()
+                .text(string)
+                .build();
+
+            // buffer.cre
+
+            text_password.set_buffer(Some(&buffer));
         });
 
         println!("Password Generator loaded");
